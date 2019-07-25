@@ -60,8 +60,8 @@ class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSta
             new CallScreen()
           ]),
       floatingActionButton:  new FloatingActionButton(
-          child: new Icon(Icons.message),
-          backgroundColor: new Color(0xff25D366),
+          child: new Icon(Icons.message, color: Colors.white,),
+          backgroundColor: Colors.green,
           onPressed: () => print("Open the chat")
       ),
     );

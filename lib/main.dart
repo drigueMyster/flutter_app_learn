@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 import 'whatsapp_page.dart';
 import 'form.dart';
+import 'Pages/chat_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,14 +18,17 @@ class MyApp extends StatelessWidget {
         primaryColor: new Color(0xff075E54),
         accentColor: new Color(0xff25D366)
       ),
-      home: new WhatsAppHome(),
-//      routes: {
-//        "/" : (context) => MyCustomForm(),
-//        "/detail" : (context) => DetailScreen()
-//      },
+     // home: new MyCustomForm(),
+      routes: {
+        "/" : (context) => WhatsAppHome(),
+        "/loginForm" : (context) => MyCustomForm(),
+        DetailScreen.routeName : (context) => DetailScreen(),
+        ChatDetail.routeName : (context) => ChatDetail(),
+      },
     );
   }
 }
+
 
 class RandomWordsState extends State<RandomWords>{
  // final _suggestion =
