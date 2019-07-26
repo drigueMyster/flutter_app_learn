@@ -20,9 +20,10 @@ class MyApp extends StatelessWidget {
       ),
      // home: new MyCustomForm(),
       routes: {
-        "/" : (context) => WhatsAppHome(),
+        //"/" : (context) => WhatsAppHome(),
+        "/" : (context) => MyCustomForm(),
         "/loginForm" : (context) => MyCustomForm(),
-        DetailScreen.routeName : (context) => DetailScreen(),
+        DetailScreenState.routeName : (context) => DetailScreen(),
         ChatDetail.routeName : (context) => ChatDetail(),
       },
     );

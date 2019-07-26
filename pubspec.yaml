@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   english_words: ^3.1.0
   http: ^0.12.0+2
+  #flutter_app:
 
 dev_dependencies:
   flutter_test:
@@ -36,7 +37,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+#  fonts:
+#    - family: Exo_Regular
+#      fonts:
+#        - asset: flutter_app/lib/fonts/exo_regular.ttf
+#          style: regular
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
