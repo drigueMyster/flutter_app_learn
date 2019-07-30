@@ -171,6 +171,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                         ),
                       ),
                     ),
+                    Container(
+
+                    )
                   ],
                 ),
               ),
@@ -229,9 +232,11 @@ class DetailScreenState extends State<DetailScreen> {
     final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     //print(${args.toString()});
     return Scaffold(
+
       appBar: AppBar(
         title: Text("${args.username}"),
       ),
+
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -250,7 +255,7 @@ class DetailScreenState extends State<DetailScreen> {
                           ),
                         ),
                         Text("Username and Info",
-                          style: TextStyle(color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold))
+                          style: TextStyle(fontFamily: "RobotoMono", color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold))
                       ],
                     ),
                   ),
@@ -258,56 +263,60 @@ class DetailScreenState extends State<DetailScreen> {
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(color: Colors.green)),
             ListTile(
-              title: Text("Dashboard"),
+              title: Text("Dashboard" , style: TextStyle(fontFamily: 'ExoRegular')),
               onTap: () {
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
-              title: Text("Menu principale"),
+              title: Text("Menu principale", style: TextStyle(fontFamily: 'RobotoMono'),),
               onTap: () {},
             )
           ],
         ),
       ),
-      body: new Column(
-        children: <Widget>[
-          Center(
-              child: Hero(
-                  tag: "showImg",
-                  child: Image.network("https://picsum.photos/250?image=9"))),
-          Container(
-              margin: EdgeInsets.all(10.0),
-              child: GestureDetector(
-                child: Text(
-                  "${args.username} and password id ${args.password}",
-                ),
-                onTap: () {
-                  Navigator.pop(context, "Retour au bercaille");
-                },
-              )),
-          Center(
-            child: AnimatedContainer(
-              height: _height,
-              width: _width,
-              decoration:
-                  BoxDecoration(color: _color, borderRadius: _borderRadius),
+
+      body:  SingleChildScrollView(
+        child:   new Column(
+          children: <Widget>[
+            Center(
+                child: Hero(
+                    tag: "showImg",
+                    child: Image.network("https://picsum.photos/250?image=9"))),
+            Container(
+                margin: EdgeInsets.all(10.0),
+                child: GestureDetector(
+                  child: Text(
+                    "${args.username} and password id ${args.password}",
+                  ),
+                  onTap: () {
+                    Navigator.pop(context, "Retour au bercaille");
+                  },
+                )),
+            Center(
+              child: AnimatedContainer(
+                height: _height,
+                width: _width,
+                decoration:
+                BoxDecoration(color: _color, borderRadius: _borderRadius),
+                duration: Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn,
+              ),
+            ),
+            AnimatedOpacity(
+              opacity: _visible ? 1.0 : 0.0,
               duration: Duration(seconds: 1),
-              curve: Curves.fastOutSlowIn,
-            ),
-          ),
-          AnimatedOpacity(
-            opacity: _visible ? 1.0 : 0.0,
-            duration: Duration(seconds: 1),
-            child: Container(
-              width: 200.0,
-              height: 200.0,
-              color: Colors.pink,
-              margin: EdgeInsets.all(10.0),
-            ),
-          )
-        ],
+              child: Container(
+                width: 200.0,
+                height: 200.0,
+                color: Colors.pink,
+                margin: EdgeInsets.all(10.0),
+              ),
+            )
+          ],
+        ),
       ),
+
       floatingActionButton: new FloatingActionButton(
         child: Icon(Icons.play_arrow, color: Colors.white),
         tooltip: "Animate",
@@ -333,7 +342,6 @@ class DetailScreenState extends State<DetailScreen> {
             // Generate a random border radius.
             _borderRadius =
                 BorderRadius.circular(random.nextInt(100).toDouble());
-
             print("***Press on button ==> $_width");
           });
         },

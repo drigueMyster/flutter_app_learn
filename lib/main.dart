@@ -3,6 +3,7 @@ import 'package:english_words/english_words.dart';
 import 'whatsapp_page.dart';
 import 'form.dart';
 import 'Pages/chat_screen.dart';
+import 'awesome_login.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     //final wordPair = WordPair.random();
     num number = 10;
     return MaterialApp(
-      title: 'First Flutter app',
+      //title: 'First Flutter app',
       initialRoute: "/",
       theme: new ThemeData(
         primaryColor: new Color(0xff075E54),
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
      // home: new MyCustomForm(),
       routes: {
         //"/" : (context) => WhatsAppHome(),
-        "/" : (context) => MyCustomForm(),
+        "/" : (context) => AwesomeLogin(),
         "/loginForm" : (context) => MyCustomForm(),
         DetailScreenState.routeName : (context) => DetailScreen(),
         ChatDetail.routeName : (context) => ChatDetail(),
