@@ -4,6 +4,7 @@ import 'whatsapp_page.dart';
 import 'form.dart';
 import 'Pages/chat_screen.dart';
 import 'awesome_login.dart';
+import 'Econvivial/login.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,8 +23,10 @@ class MyApp extends StatelessWidget {
      // home: new MyCustomForm(),
       routes: {
         //"/" : (context) => WhatsAppHome(),
-        "/" : (context) => AwesomeLogin(),
+        //"/" : (context) => AwesomeLogin(),
+        "/" : (context) => LoginPage(),
         "/loginForm" : (context) => MyCustomForm(),
+        "/econvivialLogin" : (context) => LoginPage(),
         DetailScreenState.routeName : (context) => DetailScreen(),
         ChatDetail.routeName : (context) => ChatDetail(),
       },

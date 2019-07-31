@@ -42,13 +42,18 @@ flutter:
     - family: ExoRegular
       fonts:
       - asset: fonts/exo_regular.ttf
-        style: normal
+        style: italic
 
     - family: RobotoMono
       fonts:
       - asset: fonts/RobotoMono-Regular.ttf
       - asset: fonts/RobotoMono-RegularItalic.ttf
-        style: normal
+        style: italic
+
+    - family: UnbuntuLight
+      fonts:
+      - asset: fonts/ubuntu_light.ttf
+        style: italic
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
