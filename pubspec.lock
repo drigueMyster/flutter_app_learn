@@ -128,6 +128,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.5"
+  spotlight_carousel:
+    dependency: "direct main"
+    description:
+      name: spotlight_carousel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   stack_trace:
     dependency: transitive
     description:
