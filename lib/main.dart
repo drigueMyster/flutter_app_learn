@@ -6,6 +6,7 @@ import 'Pages/chat_screen.dart';
 import 'awesome_login.dart';
 import 'Econvivial/login.dart';
 import 'spotlight.dart';
+import 'dashboard.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,10 +26,11 @@ class MyApp extends StatelessWidget {
       routes: {
         //"/" : (context) => WhatsAppHome(),
         //"/" : (context) => AwesomeLogin(),
-       // "/" : (context) => LoginPage(),
-        "/" : (context) => Spotlight(),
+        "/" : (context) => LoginPage(),
+        //"/" : (context) => Spotlight(),
         "/loginForm" : (context) => MyCustomForm(),
         "/econvivialLogin" : (context) => LoginPage(),
+        DashBoardAppState.routeName : (context) => DashBoardApp(),
         DetailScreenState.routeName : (context) => DetailScreen(),
         ChatDetail.routeName : (context) => ChatDetail(),
       },

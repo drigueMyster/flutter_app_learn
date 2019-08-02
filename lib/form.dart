@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
+import 'Preferences/session_manager.dart';
+import 'package:toast/toast.dart';
+import 'dashboard.dart';
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _keyGlobal = GlobalKey<FormState>();
@@ -11,6 +13,7 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   String username, password;
 
+  SessionManager sessionManager = new SessionManager();
   MyCustomFormState();
   MyCustomFormState.withArgs(this.username, this.password);
 
@@ -172,9 +175,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                         ),
                       ),
                     ),
-                    Container(
-
-                    )
+                    Container()
                   ],
                 ),
               ),
@@ -224,20 +225,20 @@ class DetailScreenState extends State<DetailScreen> {
   Color _color = Colors.green;
   BorderRadiusGeometry _borderRadius = BorderRadius.circular(8);
 
+  SessionManager sessionManager = new SessionManager();
+
   bool _visible = true;
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
 
     //final MyCustomFormState args = ModalRoute.of(context).settings.arguments;
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    //final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     //print(${args.toString()});
     return Scaffold(
-
       appBar: AppBar(
-        title: Text("${args.username}"),
+        title: Text("Dashboard"),
       ),
-
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -250,13 +251,23 @@ class DetailScreenState extends State<DetailScreen> {
                         Container(
                           height: 80.0,
                           width: 80.0,
-                          margin: EdgeInsets.fromLTRB(0,  20.0 ,  0.0,  10.0),
-                          child: CircleAvatar(
-                            backgroundColor: Colors.amber,
+                          margin: EdgeInsets.fromLTRB(0, 20.0, 0.0, 10.0),
+                          child: Hero(
+                              tag: "showImg",
+                              child: CircleAvatar(
+                                foregroundColor: Theme.of(context).primaryColor,
+                                backgroundColor: Colors.grey,
+                                backgroundImage: NetworkImage(
+                                    "https://picsum.photos/250?image=9"),
+                              )
                           ),
                         ),
                         Text("Username and Info",
-                          style: TextStyle(fontFamily: "RobotoMono", color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold))
+                            style: TextStyle(
+                                fontFamily: "UnbuntuLight",
+                                color: Colors.white,
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold))
                       ],
                     ),
                   ),
@@ -264,60 +275,55 @@ class DetailScreenState extends State<DetailScreen> {
                 padding: EdgeInsets.all(5.0),
                 decoration: BoxDecoration(color: Colors.green)),
             ListTile(
-              title: Text("Dashboard" , style: TextStyle(fontFamily: 'ExoRegular')),
+              title: Text("Dashboard",
+                  style: TextStyle(fontFamily: 'UnbuntuLight')),
               onTap: () {
                 Navigator.of(context).pop();
               },
             ),
             ListTile(
-              title: Text("Menu principale", style: TextStyle(fontFamily: 'RobotoMono'),),
+              title: Text(
+                "Menu principale",
+                style: TextStyle(fontFamily: 'UnbuntuLight'),
+              ),
               onTap: () {},
+            ),
+            ListTile(
+              title: Text(
+                "Déconnexion",
+                style: TextStyle(fontFamily: 'UnbuntuLight'),
+              ),
+              onTap: () {
+                print("Hope it work");
+                sessionManager.logOut();
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context, "Retour au bercaille");
+                  Toast.show("Déconnexion", context,
+                      duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+                }
+              },
             )
           ],
         ),
       ),
-
-      body:  SingleChildScrollView(
-        child:   new Column(
+      body: SingleChildScrollView(
+        child: new Column(
           children: <Widget>[
-            Center(
-                child: Hero(
-                    tag: "showImg",
-                    child: Image.network("https://picsum.photos/250?image=9"))),
             Container(
                 margin: EdgeInsets.all(10.0),
                 child: GestureDetector(
                   child: Text(
-                    "${args.username} and password id ${args.password}",
+                    "Hope  it work",
                   ),
                   onTap: () {
                     Navigator.pop(context, "Retour au bercaille");
                   },
                 )),
-            Center(
-              child: AnimatedContainer(
-                height: _height,
-                width: _width,
-                decoration:
-                BoxDecoration(color: _color, borderRadius: _borderRadius),
-                duration: Duration(seconds: 1),
-                curve: Curves.fastOutSlowIn,
-              ),
-            ),
-            AnimatedOpacity(
-              opacity: _visible ? 1.0 : 0.0,
-              duration: Duration(seconds: 1),
-              child: Container(
-                width: 200.0,
-                height: 200.0,
-                color: Colors.pink,
-                margin: EdgeInsets.all(10.0),
-              ),
-            )
+            showCard(context),
+            accessDashBoard(context),
           ],
         ),
       ),
-
       floatingActionButton: new FloatingActionButton(
         child: Icon(Icons.play_arrow, color: Colors.white),
         tooltip: "Animate",
@@ -348,5 +354,71 @@ class DetailScreenState extends State<DetailScreen> {
         },
       ),
     );
+  }
+
+  Widget showCard(BuildContext context) {
+    return Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
+            const ListTile(
+              leading: Icon(Icons.album),
+              title: Text('The Enchanted Nightingale'),
+              subtitle: Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
+            ),
+            ButtonTheme.bar(
+              // make buttons use the appropriate styles for cards
+              child: ButtonBar(
+                children: <Widget>[
+                  FlatButton(
+                    child: const Text('BUY TICKETS'),
+                    onPressed: () {/* ... */},
+                  ),
+                  FlatButton(
+                    child: const Text('LISTEN'),
+                    onPressed: () {/* ... */},
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget accessDashBoard(BuildContext context) {
+    return Center(
+        child: Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+
+          const SizedBox(height: 20),
+          RaisedButton(
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, DashBoardAppState.routeName);
+            },
+            textColor: Colors.white,
+            padding: const EdgeInsets.all(0.0),
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: <Color>[
+                    Color(0xFF0D47A1),
+                    Color(0xFF1976D2),
+                    Color(0xFF42A5F5),
+                  ],
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0),
+              child:
+                  const Text('Access Dashboard', style: TextStyle(fontSize: 20)),
+            ),
+          ),
+        ],
+      ),
+    ));
   }
 }

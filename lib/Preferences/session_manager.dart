@@ -28,12 +28,14 @@ class SessionManager{
   // Get user Name
   Future<String> getUsername() async{
     final SharedPreferences prefs =  await SharedPreferences.getInstance();
+    print("***Getting username");
     return prefs.get(_username) ?? "";
   }
 
   // Set user Name
   Future<void> setUsername(String _uName) async{
     final SharedPreferences prefs =  await SharedPreferences.getInstance();
+    print("***Setting username");
     return prefs.setString(_username, _uName);
   }
 
@@ -98,4 +100,8 @@ class SessionManager{
     return prefs.setString(_region, _uRegion);
   }
 
+  Future<void> logOut() async{
+    final SharedPreferences prefs =  await SharedPreferences.getInstance();
+    return prefs.clear();
+  }
 }
