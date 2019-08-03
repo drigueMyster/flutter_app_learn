@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'shop_items.dart';
 
 class DashBoardApp extends StatefulWidget {
   @override
@@ -67,23 +68,6 @@ class DashBoardAppState extends State<DashBoardApp> {
           )
         ],
       ),
-//      body: StaggeredGridView.count(
-//        crossAxisCount: 1,
-//        crossAxisSpacing: 12.0,
-//        mainAxisSpacing: 12.0,
-//        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-//        children: <Widget>[
-//          _showFirstCard(context),
-//          _showSecondCard(context),
-//        ],
-//        staggeredTiles: [
-//          StaggeredTile.extent(2, 120.0),
-//          StaggeredTile.extent(1, 280.0),
-//          StaggeredTile.extent(1, 180.0),
-//          StaggeredTile.extent(2, 220.0),
-//
-//        ],
-//      ),
       body: SingleChildScrollView(
         child: Container(
           margin: EdgeInsets.all(15.0),
@@ -308,48 +292,52 @@ class DashBoardAppState extends State<DashBoardApp> {
     );
   }
 
-
   Widget _showLastCard(BuildContext context) {
     return Material(
       shadowColor: Colors.blue,
       borderRadius: BorderRadius.circular(10.0),
       elevation: 10.0,
-      child: Container(
-          margin: EdgeInsets.only(top: 10.0),
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Show Items",
-                      style: TextStyle(
-                          color: Colors.pink, fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      "173",
-                      style: TextStyle(color: Colors.black, fontSize: 34.0),
-                    )
-                  ],
-                ),
-                Material(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: Colors.pink,
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Icon(
-                      Icons.store,
-                      color: Colors.white,
-                      size: 30.0,
-                    ),
+      child: GestureDetector(
+        onTap: (){
+          Navigator.pushNamed(context, ShopItemState.routeName);
+        },
+        child: Container(
+            margin: EdgeInsets.only(top: 10.0),
+            child: Padding(
+              padding: EdgeInsets.all(20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Column(
+                    children: <Widget>[
+                      Text(
+                        "Show Items",
+                        style: TextStyle(
+                            color: Colors.pink, fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        "173",
+                        style: TextStyle(color: Colors.black, fontSize: 34.0),
+                      )
+                    ],
                   ),
-                )
-              ],
-            ),
-          )),
+                  Material(
+                    borderRadius: BorderRadius.circular(8.0),
+                    color: Colors.pink,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(
+                        Icons.store,
+                        color: Colors.white,
+                        size: 30.0,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            )),
+      )
     );
   }
 }

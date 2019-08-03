@@ -7,6 +7,7 @@ import 'awesome_login.dart';
 import 'Econvivial/login.dart';
 import 'spotlight.dart';
 import 'dashboard.dart';
+import 'shop_items.dart';
 
 void main() => runApp(MyApp());
 
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         //"/" : (context) => Spotlight(),
         "/loginForm" : (context) => MyCustomForm(),
         "/econvivialLogin" : (context) => LoginPage(),
+        ShopItemState.routeName : (context) => ShopItem(),
         DashBoardAppState.routeName : (context) => DashBoardApp(),
         DetailScreenState.routeName : (context) => DetailScreen(),
         ChatDetail.routeName : (context) => ChatDetail(),
