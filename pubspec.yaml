@@ -32,8 +32,8 @@ dependencies:
   toast: ^0.1.5
   flutter_staggered_grid_view: ^0.2.7
   flutter_sparkline: ^0.1.0
-  flutter_local_notifications: ^0.5.2
-
+  #flutter_local_notifications: ^0.5.2
+  font_awesome_flutter: ^8.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -60,12 +60,27 @@ flutter:
       fonts:
       - asset: fonts/ubuntu_light.ttf
         style: italic
+
+    - family: WorkSansSemiBold
+      fonts:
+      - asset: assets/fonts/Work_Sans/WorkSans-SemiBold.ttf
+
+    - family: WorkSansBold
+      fonts:
+      - asset: assets/fonts/Work_Sans/WorkSans-Bold.ttf
+
+    - family: WorkSansMedium
+      fonts:
+      - asset: assets/fonts/Work_Sans/WorkSans-Medium.ttf
+
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   assets:
   - assets/
+  - assets/login_logo.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -8,6 +8,7 @@ import 'Econvivial/login.dart';
 import 'spotlight.dart';
 import 'dashboard.dart';
 import 'shop_items.dart';
+import 'astrade/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,9 +26,9 @@ class MyApp extends StatelessWidget {
       ),
      // home: new MyCustomForm(),
       routes: {
-        //"/" : (context) => WhatsAppHome(),
+        "/" : (context) => AsLoginPage(),
         //"/" : (context) => AwesomeLogin(),
-        "/" : (context) => LoginPage(),
+       // "/" : (context) => LoginPage(),
         //"/" : (context) => Spotlight(),
         "/loginForm" : (context) => MyCustomForm(),
         "/econvivialLogin" : (context) => LoginPage(),

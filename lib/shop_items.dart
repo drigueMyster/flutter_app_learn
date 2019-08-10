@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+//import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class ShopItem extends StatefulWidget {
   @override
@@ -11,22 +11,22 @@ class ShopItem extends StatefulWidget {
 
 class ShopItemState extends State<ShopItem> {
   static String routeName = "shopItem";
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+ // FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
-    // If you have skipped STEP 3 then change app_icon to @mipmap/ic_launcher
-    var initializationSettingsAndroid =
-        new AndroidInitializationSettings("@mipmap/ic_launcher");
-    var initializationSettingsIOS = new IOSInitializationSettings();
-    var initializationSettings = new InitializationSettings(
-        initializationSettingsAndroid, initializationSettingsIOS);
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  }
+//  @override
+//  void initState() {
+//    // TODO: implement initState
+//    super.initState();
+//    // initialise the plugin. app_icon needs to be a added as a drawable resource to the Android head project
+//    // If you have skipped STEP 3 then change app_icon to @mipmap/ic_launcher
+//    var initializationSettingsAndroid =
+//        new AndroidInitializationSettings("@mipmap/ic_launcher");
+//    var initializationSettingsIOS = new IOSInitializationSettings();
+//    var initializationSettings = new InitializationSettings(
+//        initializationSettingsAndroid, initializationSettingsIOS);
+//    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+//    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class ShopItemState extends State<ShopItem> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            _showNotificationWithDefaultSound();
+                            //_showNotificationWithDefaultSound();
                           },
                           child: Text(
                             "ADD A NEW ITEM",
@@ -101,23 +101,23 @@ class ShopItemState extends State<ShopItem> {
   }
 
   // Method 2
-  Future _showNotificationWithDefaultSound() async {
-    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
-        '1', 'Hope', 'your channel description',
-        importance: Importance.Max, priority: Priority.High);
-    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
-    var platformChannelSpecifics = new NotificationDetails(
-        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
-    print('Showing en cours ...');
-    await flutterLocalNotificationsPlugin.show(
-      1,
-      'Alerte info',
-      'Hope juste a fullstack',
-      platformChannelSpecifics,
-    );
-
-   // await flutterLocalNotificationsPlugin.show(id, title, body, notificationDetails)
-  }
+//  Future _showNotificationWithDefaultSound() async {
+//    var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
+//        '1', 'Hope', 'your channel description',
+//        importance: Importance.Max, priority: Priority.High);
+//    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+//    var platformChannelSpecifics = new NotificationDetails(
+//        androidPlatformChannelSpecifics, iOSPlatformChannelSpecifics);
+//    print('Showing en cours ...');
+//    await flutterLocalNotificationsPlugin.show(
+//      1,
+//      'Alerte info',
+//      'Hope juste a fullstack',
+//      platformChannelSpecifics,
+//    );
+//
+//   // await flutterLocalNotificationsPlugin.show(id, title, body, notificationDetails)
+//  }
 
   Widget _firstCard() {
     return Material(
